@@ -56,9 +56,13 @@ namespace AplicacaoBancoUsandoFuncoes
                     double valorTransf = Convert.ToDouble(Console.ReadLine());
 
                     saldoContas = Transferir(saldoContas, numeroContas, contaOrigem, contaDestino, valorTransf);
-
                 }
-
+                Console.WriteLine("Insira a opcao que deseja:");
+                Console.WriteLine("1-Sacar");
+                Console.WriteLine("2-Depositar");
+                Console.WriteLine("3-Transferir");
+                Console.WriteLine("0-Sair");
+                opcao = Convert.ToInt32(Console.ReadLine());
             }
         }
         //static void Sacar(double[] saldoContas_p, string[] numeroContas_p, string conta, double valorSaque)
@@ -101,6 +105,10 @@ namespace AplicacaoBancoUsandoFuncoes
                         saldoContas_p[i] = saldoContas_p[i] - valorSaque;
                         Console.WriteLine("Saque efetuado.");
                     }
+                    else 
+                    {
+                        Console.WriteLine("Você está sem saldo.");
+                    }
                 }
             }
 
@@ -134,6 +142,7 @@ namespace AplicacaoBancoUsandoFuncoes
                             if(numeroContas_p[j] == contaDestino) 
                             {
                                 saldoContas_p[j] = saldoContas_p[j] + valorTransf;
+                                saldoContas_p[i] -= valorTransf;
                             }
                         }
                     }
