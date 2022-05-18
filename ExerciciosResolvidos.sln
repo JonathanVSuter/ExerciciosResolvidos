@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AplicacaoBanco", "Aplicacao
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AplicacaoBancoUsandoFuncoes", "AplicacaoBancoUsandoFuncoes\AplicacaoBancoUsandoFuncoes.csproj", "{0F6FA2F7-7004-4064-A5F9-3F9F70888BB1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MostrarDivisoresAteN", "MostrarDivisoresAteN\MostrarDivisoresAteN.csproj", "{95376D30-E2A2-403F-9066-C1395863AB9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MostrarDivisoresAteN", "MostrarDivisoresAteN\MostrarDivisoresAteN.csproj", "{95376D30-E2A2-403F-9066-C1395863AB9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlunosQuePassaramUsandoArraysEFuncoes", "AlunosQuePassaramUsandoArraysEFuncoes\AlunosQuePassaramUsandoArraysEFuncoes.csproj", "{724F7C4B-19B6-472B-82C9-57889829923A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{95376D30-E2A2-403F-9066-C1395863AB9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95376D30-E2A2-403F-9066-C1395863AB9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95376D30-E2A2-403F-9066-C1395863AB9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{724F7C4B-19B6-472B-82C9-57889829923A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{724F7C4B-19B6-472B-82C9-57889829923A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{724F7C4B-19B6-472B-82C9-57889829923A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{724F7C4B-19B6-472B-82C9-57889829923A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
