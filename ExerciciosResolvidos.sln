@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "3notas10alunos", "3notas10a
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MMC", "MMC\MMC.csproj", "{067CBB7B-FF78-482F-BFBF-82BB3FD98958}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevisaoGeralCSharp", "RevisaoGeralCSharp\RevisaoGeralCSharp.csproj", "{0EB01309-8108-47C6-8C3F-3FA4FC5F4A0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RevisaoGeralCSharp", "RevisaoGeralCSharp\RevisaoGeralCSharp.csproj", "{0EB01309-8108-47C6-8C3F-3FA4FC5F4A0C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevisaoFuncoes", "RevisaoFuncoes\RevisaoFuncoes.csproj", "{90869536-B1CE-4D6C-9DA1-686BE2404138}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{0EB01309-8108-47C6-8C3F-3FA4FC5F4A0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0EB01309-8108-47C6-8C3F-3FA4FC5F4A0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0EB01309-8108-47C6-8C3F-3FA4FC5F4A0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90869536-B1CE-4D6C-9DA1-686BE2404138}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90869536-B1CE-4D6C-9DA1-686BE2404138}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90869536-B1CE-4D6C-9DA1-686BE2404138}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90869536-B1CE-4D6C-9DA1-686BE2404138}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
