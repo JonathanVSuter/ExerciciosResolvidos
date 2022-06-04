@@ -26,15 +26,15 @@ namespace Ex5RevisaoFuncoes
             Console.WriteLine("Digite 2 para Subtracao.");
             Console.WriteLine("Digite 3 para Divisao.");
             Console.WriteLine("Digite 4 Multiplicacao.");
-            int opcao = Convert.ToInt32(Console.ReadLine());
+            Operacoes opcao = (Operacoes)Convert.ToInt32(Console.ReadLine());
             double res;
             double a;
             double b;
-            while (opcao != (int)Operacoes.Sair) 
+            while (opcao != Operacoes.Sair) 
             {                
                 switch (opcao)
                 {                    
-                    case (int)Operacoes.Soma:
+                    case Operacoes.Soma:
                         Console.WriteLine("Informe o primeiro valor:");
                         a = Convert.ToDouble(Console.ReadLine());
                         Console.WriteLine("Informe o segundo valor:");
@@ -42,7 +42,7 @@ namespace Ex5RevisaoFuncoes
                         res = Soma(a, b);
                         Console.WriteLine("A soma é:"+res);
                         break;
-                    case (int)Operacoes.Subtracao:
+                    case Operacoes.Subtracao:
                         Console.WriteLine("Informe o primeiro valor:");
                         a = Convert.ToDouble(Console.ReadLine());
                         Console.WriteLine("Informe o segundo valor:");
@@ -50,7 +50,7 @@ namespace Ex5RevisaoFuncoes
                         res = Subtracao(a, b);
                         Console.WriteLine("A Subtracao é:"+res);
                         break;
-                    case (int)Operacoes.Divisao:
+                    case Operacoes.Divisao:
                         Console.WriteLine("Informe o primeiro valor:");
                         a = Convert.ToDouble(Console.ReadLine());
                         Console.WriteLine("Informe o segundo valor:");
@@ -58,7 +58,7 @@ namespace Ex5RevisaoFuncoes
                         res = Divisao(a, b);
                         Console.WriteLine("A Divisao é:"+res);
                         break;
-                    case (int)Operacoes.Multiplicao:
+                    case Operacoes.Multiplicao:
                         Console.WriteLine("Informe o primeiro valor:");
                         a = Convert.ToDouble(Console.ReadLine());
                         Console.WriteLine("Informe o segundo valor:");
