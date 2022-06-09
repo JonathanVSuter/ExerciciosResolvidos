@@ -12,6 +12,10 @@ namespace OrientacaoObjetosInicial
     //}
     public class Motorista 
     {
+        public static void MostrarTexto() 
+        {
+            Console.WriteLine("Texto");
+        }
         //Quando escrever o nome de um campo, usar o primeiro nome com letra maiúscula
         //e as demais palavras dentro da declaração com letra maiúscula também.
         private Guid CodigoMotorista { get; set; }
@@ -36,6 +40,7 @@ namespace OrientacaoObjetosInicial
         public string Endereco { get; set; }
         public double Salario { get; set; }
         public string CategoriaCnh { get; set; }
+        private bool _Ativo { get; set; }
         //construtor com dados completos;
         public Motorista(Guid codigoMotorista, string nome, DateTime dataNascimento,
             string cpf, string cnh, string telefone, string endereco, double salario, string categoriaCnh, string rg)
@@ -68,7 +73,10 @@ namespace OrientacaoObjetosInicial
             this.CategoriaCnh = categoriaCnh;
             this.Rg = rg;
         }
-
+        public void Demite(bool estado) 
+        {
+            this._Ativo = estado;
+        }
         public string IdMot() 
         {
             return this.PegarIdMotorista();
@@ -84,6 +92,9 @@ namespace OrientacaoObjetosInicial
         {
             Motorista motorista = new Motorista(Guid.NewGuid(), "Jonathan", new DateTime(1996, 06, 19),"09479806959","000000000", "47997443418","Rua A", 2500,"AB", "5989267");            
             Motorista motorista1 = new Motorista();
+            //método estático
+            Motorista.MostrarTexto();
+            motorista.Demite(false);
             //Motorista motorista1 = new Motorista();
             //MotoristaCaminhao motoristaCaminhao = new MotoristaCaminhao();
             Console.WriteLine("Nome:" + motorista.Nome);
