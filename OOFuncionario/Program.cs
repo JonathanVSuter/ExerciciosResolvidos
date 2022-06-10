@@ -14,25 +14,25 @@ using System;
 
 namespace OOFuncionario
 {    
-    public class Contato 
-    {
-        public string Nome { get; set; }
-        public string Telefone { get; set; }
-    }
-    public class Pessoa  
-    {
-        public string Nome { get; set; }
-        public string Telefone { get; set; }
-        public Contato[] Contato { get; set; }
-        public string Cpf { get; set; }
-        public Pessoa(string nome, string telefone, string cpf) 
-        {
-            this.Nome = nome;
-            this.Telefone = telefone;
-            this.Cpf = cpf;
-        }
-        public Pessoa() { }
-    }
+    //public class Contato 
+    //{
+    //    public string Nome { get; set; }
+    //    public string Telefone { get; set; }
+    //}
+    //public class Pessoa  
+    //{
+    //    public string Nome { get; set; }
+    //    public string Telefone { get; set; }
+    //    public Contato[] Contato { get; set; }
+    //    public string Cpf { get; set; }
+    //    public Pessoa(string nome, string telefone, string cpf) 
+    //    {
+    //        this.Nome = nome;
+    //        this.Telefone = telefone;
+    //        this.Cpf = cpf;
+    //    }
+    //    public Pessoa() { }
+    //}
     //public class Departamento 
     //{
     //    public string Nome { get; set; }
@@ -40,13 +40,13 @@ namespace OOFuncionario
     //    public string Ramal { get; set; }
     //    public Funcionario Gerente { get; set; }
     //}
-    public class Funcao 
-    {
-        public string Descricao { get; set; }
-    }
+    //public class Funcao 
+    //{
+    //    public string Descricao { get; set; }
+    //}
     public class Funcionario 
     {
-        public Funcao Funcao { get; set; }
+        //public Funcao Funcao { get; set; }
         public string Nome 
         { 
             get; 
