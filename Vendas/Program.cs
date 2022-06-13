@@ -19,6 +19,18 @@ namespace Vendas
         public override string ToString()
         {
             return $"{this.Codigo} {this.Marca} {this.Descricao} {this.Preco}";
+        }        
+        public static List<Produto> PreencherProdutos(List<Produto> produtos) 
+        {
+            produtos.Add(new Produto(1, "Maminha a vácuo", "Bestbeef", 75));
+            produtos.Add(new Produto(2, "Maminha a vácuo", "Bestbeef", 75));
+            produtos.Add(new Produto(3, "Maminha a vácuo", "Bestbeef", 75));
+            produtos.Add(new Produto(4, "Maminha a vácuo", "Bestbeef", 75));
+            produtos.Add(new Produto(5, "Maminha a vácuo", "Bestbeef", 75));
+            produtos.Add(new Produto(6, "Maminha a vácuo", "Bestbeef", 75));
+            produtos.Add(new Produto(7, "Maminha a vácuo", "Bestbeef", 75));
+            produtos.Add(new Produto(1, "Maminha a vácuo", "Bestbeef", 75));
+            return produtos;
         }
     }
     public class Carrinho
@@ -116,7 +128,8 @@ namespace Vendas
             //preenchendo a lista;
             PopularListaDeProdutosRef(produtos);
             produtos = PopularListaDeProdutosRetornando(produtos);
-            
+            //usando a classe Produto para preencher a lista;
+            produtos = Produto.PreencherProdutos(produtos);
 
 
 
