@@ -6,6 +6,7 @@ namespace Vendas
 {
     public class Vendedor
     {
+        public int Codigo { get; set;}
         public string Nome { get; set; }
         public string CodigoCracha { get; set; }
         public Vendedor(string nome, string codigoCracha) 

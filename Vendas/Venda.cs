@@ -9,6 +9,7 @@ namespace Vendas
         public double ValorTotal { get; set; }
         public Cliente Cliente { get; set; }
         public Vendedor Vendedor { get; set; }
+        public List<Produto> Produtos { get; set; }
         public Venda(double valorTotal, Cliente cliente, Vendedor vendedor) 
         {
             this.Vendedor = vendedor;
