@@ -36,6 +36,43 @@ namespace Vendas
                 Console.WriteLine($"Preço: {produto.Preco}");
             }
         }
+        //preencher uma lista usando função e retornando os valores (lista de produtos)
+        static List<Produto> PopularListaDeProdutosRetornando(List<Produto> produtos)
+        {
+            //caso a lista não esteja inicializada.
+            if (produtos is null)
+                produtos = new List<Produto>();
+            //pegar entradas do usuário:
+            Console.WriteLine("Insira o código do produto");
+            int codigo = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Insira a descrição do produto");
+            string desc = Console.ReadLine();
+            Console.WriteLine("Insira a marca");
+            string marca = Console.ReadLine();
+            Console.WriteLine("Insira o preço");
+            double preco = Convert.ToDouble(Console.ReadLine());
+            Produto a = new Produto(codigo, desc, marca, preco);
+            produtos.Add(a);
+            return produtos;
+        }
+        //preencher uma lista usando procedimento e referência (lista de produtos)
+        static void PopularListaDeProdutosRef(List<Produto> produtos) 
+        {
+            //caso a lista esteja não inicializada.
+            if (produtos is null) 
+                produtos = new List<Produto>();
+            //pegar entradas do usuário:
+            Console.WriteLine("Insira o código do produto");
+            int codigo = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Insira a descrição do produto");
+            string desc = Console.ReadLine();
+            Console.WriteLine("Insira a marca");
+            string marca = Console.ReadLine();
+            Console.WriteLine("Insira o preço");
+            double preco = Convert.ToDouble(Console.ReadLine());
+            Produto a = new Produto(codigo, desc, marca, preco);
+            produtos.Add(a);
+        }
         static Produto EncontrarProduto(List<Produto> produtos, int codigo) 
         {
             Produto produto = null;
@@ -63,7 +100,8 @@ namespace Vendas
             List<Venda> vendas = new List<Venda>();
             Carrinho carrinho = new Carrinho();
             List<Produto> produtos = new List<Produto>();
-            produtos.Add(new Produto(0,"Picanha a vácuo", "Bestbeef", 120));
+            Produto a = new Produto(0, "Picanha a vácuo", "Bestbeef", 120);
+            produtos.Add(a);
             produtos.Add(new Produto(1,"Maminha a vácuo", "Bestbeef", 75));
             produtos.Add(new Produto(2,"Contra-filé a vácuo", "Bestbeef", 60));
             produtos.Add(new Produto(3,"Fraldinha a vácuo", "Bestbeef", 65));
@@ -74,6 +112,12 @@ namespace Vendas
             int codigoProduto = Convert.ToInt32(Console.ReadLine());
             //usa a função "EncontrarProduto" para buscar um elemento baseado no campo "código" do produto.
             Produto produtoEncontrado = EncontrarProduto(produtos, codigoProduto);
+
+            //preenchendo a lista;
+            PopularListaDeProdutosRef(produtos);
+            produtos = PopularListaDeProdutosRetornando(produtos);
+            
+
 
 
 
