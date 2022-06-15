@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Vendas
 {
@@ -29,16 +30,35 @@ namespace Vendas
             produtos.Add(new Produto(5, "Maminha a vácuo", "Bestbeef", 75));
             produtos.Add(new Produto(6, "Maminha a vácuo", "Bestbeef", 75));
             produtos.Add(new Produto(7, "Maminha a vácuo", "Bestbeef", 75));
-            produtos.Add(new Produto(1, "Maminha a vácuo", "Bestbeef", 75));
+            produtos.Add(new Produto(10, "Maminha a vácuo", "Bestbeef", 75));
             return produtos;
         }
     }
     public class Carrinho
     {
-        public List<Produto> Produtos { get; set; } = new List<Produto>();      
+        public List<Produto> Produtos { get; set; }      
+    }
+    enum Opcoes 
+    {
+        CadastrarCliente,
+        CadastrarVendedor,
+        CadastrarProduto,
+        CriarVenda,
+        InserirNoCarrinho,
+        LimparCarrinho,
+        FinalizarVenda
     }
     class Program
     {       
+        static List<Produto> CopiarProdutosParaOutraLista(List<Produto> produtos) 
+        {
+            List<Produto> produtosCopia = new List<Produto>();
+            foreach (Produto p in produtos)
+            {
+                produtosCopia.Add(new Produto(p.Codigo, p.Descricao, p.Marca, p.Preco));
+            }
+            return produtosCopia;
+        }
         static void ListarProdutos(List<Produto> produtos) 
         {
             foreach (Produto produto in produtos) 
@@ -95,15 +115,31 @@ namespace Vendas
                     produto = produtos[i];
                 }
             }
-            return produto;
-            //Encontrar usando um cadeia de texto com override do método "ToString()" na classe "Produtos";
-            //for (int i = 0; i < produtos.Count; i++)
-            //{
-            //    if (produtos[i].ToString().Contains(descricaoProduto))
-            //    {
-            //        carrinho.Produtos.Add(produtos[i]);
-            //    }
-            //}
+            return produto;            
+        }
+        static Cliente EncontrarCliente(List<Cliente> clientes, int codigo)
+        {
+            Cliente cliente = null;
+            for (int i = 0; i < clientes.Count; i++)
+            {
+                if (clientes[i].Codigo == codigo)
+                {
+                    cliente = clientes[i];
+                }
+            }
+            return cliente;
+        }
+        static Vendedor EncontrarVendedor(List<Vendedor> vendedores, int codigo)
+        {
+            Vendedor vendedor = null;
+            for (int i = 0; i < vendedores.Count; i++)
+            {
+                if (vendedores[i].Codigo == codigo)
+                {
+                    vendedor = vendedores[i];
+                }
+            }
+            return vendedor;
         }
         static void Main(string[] args)
         {
@@ -111,6 +147,11 @@ namespace Vendas
             List<Cliente> clientes = new List<Cliente>();
             List<Venda> vendas = new List<Venda>();
             Carrinho carrinho = new Carrinho();
+            Venda vendaAtual = new Venda();
+            //Cliente atual 
+            Cliente clienteAtual = new Cliente();
+            //Vendedor atual
+            Vendedor vendedorAtual = new Vendedor();
             List<Produto> produtos = new List<Produto>();
             Produto a = new Produto(0, "Picanha a vácuo", "Bestbeef", 120);
             produtos.Add(a);
@@ -126,32 +167,77 @@ namespace Vendas
             Produto produtoEncontrado = EncontrarProduto(produtos, codigoProduto);
 
             //preenchendo a lista;
-            PopularListaDeProdutosRef(produtos);
-            produtos = PopularListaDeProdutosRetornando(produtos);
+            //PopularListaDeProdutosRef(produtos);
+            //produtos = PopularListaDeProdutosRetornando(produtos);
             //usando a classe Produto para preencher a lista;
             produtos = Produto.PreencherProdutos(produtos);
 
+            //maneira mais fácil para passar todos os produtos para o carrinho.
+            carrinho.Produtos = produtos;
+            carrinho.Produtos = new List<Produto>();
+            //maneira mais complicada porém eficaz;
+            foreach (Produto p in produtos)
+            {
+                carrinho.Produtos.Add(new Produto(p.Codigo, p.Descricao, p.Marca, p.Preco));
+            }
+
+            int opcao = Convert.ToInt32(Console.ReadLine());
+            //if's ou switch's:
+            if(opcao == (int)Opcoes.InserirNoCarrinho)
+            {
+                //pedir pro usuário o código do produto.
+                int codigo = Convert.ToInt32(Console.ReadLine());
+                Produto pSelecionado = EncontrarProduto(produtos, codigo);
+                //criar uma validação e etc.
+                if(pSelecionado != null) 
+                {
+                    //carrinho.Produtos.Add(produtoSelecionado);
+                    carrinho.Produtos.Add(new Produto(pSelecionado.Codigo, pSelecionado.Descricao, 
+                                          pSelecionado.Marca, pSelecionado.Preco));
+                    Console.WriteLine("Produto adicionado ao carrinho.");
+                }
+            }
+            else if(opcao == (int)Opcoes.CriarVenda) 
+            {
+                //pedir pro usuário o codigo do cliente;
+                //pedir pro usuário o cracha do vendedor;
+                //para poder criar a venda;
+                int codigoCliente = Convert.ToInt32(Console.ReadLine());
+                int codigoVendedor = Convert.ToInt32(Console.ReadLine());
+                //encontra o cliente
+                Cliente cSelecionado = EncontrarCliente(clientes, codigoCliente);
+                //encontra o vendedor
+                Vendedor vSelecionado = EncontrarVendedor(vendedores, codigoVendedor);
+
+                //precisa achar os dois para poder criar a venda.
+                if(cSelecionado != null && vSelecionado != null) 
+                {
+                    vendaAtual.Cliente = cSelecionado;//fazer isso na hora de fechar a venda: new Cliente(cSelecionado.Codigo, cSelecionado.Nome, cSelecionado.Cpf, cSelecionado.Endereco);
+                    vendaAtual.Vendedor = vSelecionado;
+                    if(carrinho.Produtos !=null && carrinho.Produtos.Any()) 
+                    {
+                        //pois assim, caso mexa no carrinho, a atualização aparecerá na venda.
+                        vendaAtual.Produtos = carrinho.Produtos;
+                        //ou pode se fazer usando algum laço de repetição, adicionando novos objetos na lista.
+                    }
+                }
+            }
+            else if(opcao == (int)Opcoes.FinalizarVenda) 
+            {   
+                //pega os produtos do carrinho e joga na venda para finalizá-la e guardar o histórico dela.
+                vendaAtual.Produtos = CopiarProdutosParaOutraLista(carrinho.Produtos);
+                vendaAtual.Cliente = new Cliente(clienteAtual.Codigo,clienteAtual.Nome, clienteAtual.Cpf,clienteAtual.Endereco );
+                vendaAtual.Vendedor = new Vendedor(vendedorAtual.Codigo, vendedorAtual.Nome, vendedorAtual.CodigoCracha);
+                vendaAtual.Finalizada = true;
+                vendas.Add(new Venda());
+                Console.WriteLine("Venda finalizada.");
+            }
 
 
 
 
 
-            //recuperar um produto da lista:
 
-
-
-
-
-
-
-            //dentro da condição da compra;
-
-
-
-
-            //lista de produtos;
-            //Carrinho de compras;
-            //ações
 
 
             Vendedor vendedor = new Vendedor("Zé ", "2456412");
@@ -161,18 +247,28 @@ namespace Vendas
 
             Cliente cliente = new Cliente("Dirceu", "000000000", "Rua das Dores");
             Cliente cliente1 = new Cliente("Dirceu", "000000000", "Rua das Dores");
+            clientes.Add(cliente);
+            clientes.Add(cliente1);
 
-            Venda v1 = new Venda(2000, cliente, vendedor);
-            Venda v2 = new Venda(2000, cliente1, vendedor1);
+            Venda venda = new Venda(cliente, vendedor1);
+            venda.Produtos = carrinho.Produtos;
+            Console.WriteLine($"Valor total da venda: {venda.ValorTotal}");
+            venda.Produtos = carrinho.Produtos;
+            venda.Produtos.Add(new Produto(4, "Entrecot a vácuo", "Bestbeef", 80));
+            Console.WriteLine($"Valor total da venda: {venda.ValorTotal}");
+            venda.Produtos.Add(new Produto(4, "Entrecot a vácuo", "Bestbeef", 80));
+            Console.WriteLine($"Valor total da venda: {venda.ValorTotal}");
+            //Venda v1 = new Venda(2000, cliente, vendedor);
+            //Venda v2 = new Venda(2000, cliente1, vendedor1);
 
-            Console.WriteLine("Cliente na venda 1 "+v1.Cliente.Nome) ;
-            Console.WriteLine("Cliente na venda 2 "+v2.Cliente.Nome);
+            //Console.WriteLine("Cliente na venda 1 "+v1.Cliente.Nome) ;
+            //Console.WriteLine("Cliente na venda 2 "+v2.Cliente.Nome);
 
-            Console.WriteLine("Vendedor na venda 1 "+v1.Vendedor.Nome);
-            Console.WriteLine("Vendedor na venda 1 "+v2.Vendedor.Nome);
+            //Console.WriteLine("Vendedor na venda 1 "+v1.Vendedor.Nome);
+            //Console.WriteLine("Vendedor na venda 1 "+v2.Vendedor.Nome);
 
-            Console.WriteLine("Crachá do vendedor na venda 1 " + v1.Vendedor.CodigoCracha);
-            Console.WriteLine("Crachá do vendedor na venda 2 " + v2.Vendedor.CodigoCracha);
+            //Console.WriteLine("Crachá do vendedor na venda 1 " + v1.Vendedor.CodigoCracha);
+            //Console.WriteLine("Crachá do vendedor na venda 2 " + v2.Vendedor.CodigoCracha);
 
         }
     }
