@@ -45,9 +45,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExercicioVeiculo", "Exercic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vendas", "Vendas\Vendas.csproj", "{BFEA0CAF-3614-4E92-BC8D-F43B6CAF8D12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AulaReforco", "AulaReforco\AulaReforco.csproj", "{3F5769A8-D54D-47D1-945C-0AFDA1ACB2CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AulaReforco", "AulaReforco\AulaReforco.csproj", "{3F5769A8-D54D-47D1-945C-0AFDA1ACB2CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrudVendas", "CrudVendas\CrudVendas.csproj", "{12218331-4699-4EFD-8346-5A26900A43AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrudVendas", "CrudVendas\CrudVendas.csproj", "{12218331-4699-4EFD-8346-5A26900A43AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfacesELinq", "InterfacesELinq\InterfacesELinq.csproj", "{1118B84F-0B97-4319-A840-2E7588DA8122}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -147,6 +149,10 @@ Global
 		{12218331-4699-4EFD-8346-5A26900A43AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12218331-4699-4EFD-8346-5A26900A43AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12218331-4699-4EFD-8346-5A26900A43AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1118B84F-0B97-4319-A840-2E7588DA8122}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1118B84F-0B97-4319-A840-2E7588DA8122}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1118B84F-0B97-4319-A840-2E7588DA8122}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1118B84F-0B97-4319-A840-2E7588DA8122}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
