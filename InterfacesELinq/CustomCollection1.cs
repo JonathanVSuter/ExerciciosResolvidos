@@ -8,9 +8,14 @@ namespace InterfacesELinq
     public class CustomCollection1 : ICollection<Item>
     {
         private List<Item> Items { get; set; } = new List<Item>();
-        public int Count => throw new NotImplementedException();        
 
-        public bool IsReadOnly => throw new NotImplementedException();        
+        int ICollection<Item>.Count => throw new NotImplementedException();
+
+        bool ICollection<Item>.IsReadOnly => throw new NotImplementedException();
+
+        public int Count ;        
+
+        public bool IsReadOnly ;        
 
         public void Add(Item item)
         {
@@ -50,9 +55,14 @@ namespace InterfacesELinq
     public class CustomCollection2 : ICollection<Item>
     {
         private Item _Item {get;set;}
-        public int Count => throw new NotImplementedException();
 
-        public bool IsReadOnly => throw new NotImplementedException();
+        int ICollection<Item>.Count => throw new NotImplementedException();
+
+        bool ICollection<Item>.IsReadOnly => throw new NotImplementedException();
+
+        public int Count ;
+
+        public bool IsReadOnly ;
 
         public void Add(Item item)
         {

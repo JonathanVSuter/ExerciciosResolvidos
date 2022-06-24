@@ -153,7 +153,7 @@ namespace Vendas
             //Vendedor atual
             Vendedor vendedorAtual = new Vendedor();
             List<Produto> produtos = new List<Produto>();
-            Produto a = new Produto(0, "Picanha a vácuo", "Bestbeef", 120);
+            Produto a = new Produto(0, "Picanha a vácuo", "Bestbeef", 120);            
             produtos.Add(a);
             produtos.Add(new Produto(1,"Maminha a vácuo", "Bestbeef", 75));
             produtos.Add(new Produto(2,"Contra-filé a vácuo", "Bestbeef", 60));
@@ -240,13 +240,13 @@ namespace Vendas
 
 
 
-            Vendedor vendedor = new Vendedor("Zé ", "2456412");
-            Vendedor vendedor1 = new Vendedor("Zé ", "2456412");
+            Vendedor vendedor = new Vendedor(0,"Zé ", "2456412");
+            Vendedor vendedor1 = new Vendedor(1,"Zé ", "2456412");
             vendedores.Add(vendedor);
             vendedores.Add(vendedor1);
 
-            Cliente cliente = new Cliente("Dirceu", "000000000", "Rua das Dores");
-            Cliente cliente1 = new Cliente("Dirceu", "000000000", "Rua das Dores");
+            Cliente cliente = new Cliente(0,"Dirceu", "000000000", "Rua das Dores");
+            Cliente cliente1 = new Cliente(1,"Dirceu", "000000000", "Rua das Dores");
             clientes.Add(cliente);
             clientes.Add(cliente1);
 
@@ -258,6 +258,8 @@ namespace Vendas
             Console.WriteLine($"Valor total da venda: {venda.ValorTotal}");
             venda.Produtos.Add(new Produto(4, "Entrecot a vácuo", "Bestbeef", 80));
             Console.WriteLine($"Valor total da venda: {venda.ValorTotal}");
+            venda.Finalizada = true;
+            vendas.Add(venda);
             //Venda v1 = new Venda(2000, cliente, vendedor);
             //Venda v2 = new Venda(2000, cliente1, vendedor1);
 
