@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CalcularAreafiguras
 {
@@ -15,9 +16,29 @@ namespace CalcularAreafiguras
             {
                 ComprimentoLado = 10
             };
-            Console.WriteLine(pentagono.CalcularArea);
-            Console.WriteLine(quadrado.CalcularArea);
+            IFiguraGeometrica hexagono = new Hexagono()
+            {
+                ComprimentoLado = 10
+            };
 
+            //Console.WriteLine(quadrado1.CalcularArea());
+            //Console.WriteLine(pentagono.CalcularArea);
+            //Console.WriteLine(quadrado.CalcularArea);
+            //Console.WriteLine(hexagono.CalcularArea);
+        }
+        public List<IFiguraGeometrica> Listar() 
+        {
+            return new List<IFiguraGeometrica>()
+            {
+                new Hexagono()
+                {
+                    ComprimentoLado = 10
+                },
+                new Quadrado()
+                {
+                    ComprimentoLado = 10
+                }
+            };
         }
     }
 }

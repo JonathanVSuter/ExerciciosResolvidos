@@ -16,6 +16,7 @@ namespace InterfacesELinq
 {
     public interface IProduto 
     {
+        int Id { get; set; }
         string Marca { get; set; }
         string Descricao { get; set; }
         double Valor { get; set; }
@@ -24,6 +25,7 @@ namespace InterfacesELinq
     }
     public class Macarrao : IProduto
     {
+        public int Id { get; set; }
         public string Marca { get; set ; }
         public string Descricao { get ; set ; }
         public double Valor { get ; set ; }
@@ -42,6 +44,7 @@ namespace InterfacesELinq
     }
     public class Leite : IProduto
     {
+        public int Id { get; set; }
         public string Marca { get ; set ; }
         public string Descricao { get ; set ; }
         public double Valor { get ; set ; }
@@ -57,10 +60,11 @@ namespace InterfacesELinq
         {
             return $"Descrição: {Descricao}, Marca: {Marca}, Valor: {Valor}, Valor de Origem: {ValorMoedaOrigem}";
         }
-    }
+    }    
     public class Carne : IProduto
-    {
-        public string Marca { get ; set ; }
+    {       
+        public int Id { get; set; }
+        public virtual string Marca { get ; set ; }
         public string Descricao { get ; set ; }
         public double Valor { get ; set ; }
         public double ValorMoedaOrigem
@@ -72,12 +76,53 @@ namespace InterfacesELinq
         }
         public string PaisOrigem { get ; set ; }
         public override string ToString()
-        {
+        {            
             return $"Descrição: {Descricao}, Marca: {Marca}, Valor: {Valor}, Valor de Origem: {ValorMoedaOrigem}";
         }
     }
     class Program
     {
+        static IProduto EncontrarProduto(IList<IProduto> produtos, int id) 
+        {            
+            IProduto produto = null;
+            foreach (IProduto p in produtos) 
+            {
+                if(p.Id == id) 
+                {
+                    produto = p;
+                }
+            }
+            return produto;
+        }
+        static IList<IProduto> BuscarProdutos(IList<IProduto> produtos, string descricao)
+        {
+            IList<IProduto> produtosEncontrados = new List<IProduto>();
+
+            foreach (IProduto p in produtos)
+            {
+                if (p.ToString().Contains(descricao))
+                {
+                    if(p.GetType() == typeof(Macarrao)) 
+                    {
+                        produtosEncontrados.Add(new Macarrao()
+                        {
+                            Descricao = p.Descricao,
+                            Id = p.Id,
+                            Marca = p.Marca,
+                            PaisOrigem = p.PaisOrigem,
+                            Valor = p.Valor
+                        });
+                    }
+                }
+            }
+            return produtosEncontrados;
+        }
+        static IList<IProduto> BuscarProdutosLinq(IList<IProduto> produtos, string descricao)
+        {
+            //consulta usando linq:
+            var produtosEncontrados = produtos.Where(x => x.ToString().Contains(descricao)).ToList();
+            return produtosEncontrados;            
+        }
         static void Main(string[] args)
         {
             List<IProduto> produtos = new List<IProduto>();
@@ -102,11 +147,27 @@ namespace InterfacesELinq
                 PaisOrigem = "Índia",
                 Valor = 7.25
             });
-
-            foreach (IProduto produto in produtos)
+            produtos.Add(new Macarrao()
             {
-                Console.WriteLine(produto.ToString());                                
-            }
+                Descricao = "Penne",
+                Marca = "Bologna",
+                PaisOrigem = "Índia",
+                Valor = 7.25
+            });
+            produtos.Add(new Macarrao()
+            {
+                Descricao = "Penne",
+                Marca = "Bologna",
+                PaisOrigem = "Índia",
+                Valor = 7.25
+            });
+
+            IList<IProduto> produtosEncontrados = BuscarProdutosLinq(produtos, "P");
+
+            //foreach (IProduto produto in produtos)
+            //{
+            //    Console.WriteLine(produto.ToString());                                
+            //}
             ////List<IFuncionario> funcionarios = new List<IFuncionario>();
             //List<IFuncionario> funcionarios = new List<IFuncionario>() 
             //{

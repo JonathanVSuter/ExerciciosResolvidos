@@ -6,9 +6,17 @@ namespace CalcularAreafiguras
 {
     public interface IFiguraGeometrica
     {
-        double CalcularArea { get; }
         int NumeroTotalDeLados { get;}
         double Perimetro { get;}
         double ComprimentoLado { get; set; }
     }
+    public interface ICalcularArea<in T,T1Result, T2Result> where T: IFiguraGeometrica
+    {
+        T1Result CalcularArea();
+        T2Result QuantidadeLados(T figura);
+    }
+    public interface ICalcularAreaPentagono<in T, out TResult> where T : Pentagono 
+    {
+        TResult CalcularAreaPentagono(T pentatgono);
+    }    
 }
