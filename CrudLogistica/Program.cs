@@ -170,8 +170,16 @@ namespace CrudLogistica
                         }
                         break;
                     case Operacoes.RemoverViagem:
+                        Console.WriteLine("Informe o código da viagem:");
+                        int codigoViagemRemover = Convert.ToInt32(Console.ReadLine());
+                        Viagem viagemRemover = EncontrarViagem(Viagens, codigoViagemRemover);
+                        if(viagemRemover == null) 
+                        {
+                            Console.WriteLine("Viagem não encontrada.");
+                            break;
+                        }
+                        Viagens.Remove(viagemRemover);
                         break;
-
                 }
                 Console.WriteLine("Informe a opção que deseja:");
                 Console.WriteLine("0-Cadastrar um Motorista;");
@@ -202,55 +210,6 @@ namespace CrudLogistica
         static Viagem EncontrarViagem(List<Viagem> viagens, int id) 
         {
             return viagens.SingleOrDefault(x => x.Id == id);
-        }
-    }
-    enum Operacoes
-    {
-        CadastrarMotorista,
-        AtualizarMotorista,
-        RemoverMotorista,
-        CadastrarCaminhao,
-        AtualizarCaminhao,
-        RemoverCaminhao,
-        CadastrarViagem,
-        AtualizarViagem,
-        RemoverViagem,
-        Sair
-    }
-    public class Viagem 
-    {
-        private static int BaseId = 0;
-        public int Id { get; set; }
-        public Motorista Motorista { get; set; }
-        public Caminhao Caminhao { get; set; }
-        public Viagem() 
-        {
-            Id = BaseId;
-            BaseId++;
-        }
-    }
-    public class Motorista
-    {
-        private static int BaseId = 0;
-        public int Id { get;}
-        public string Nome { get; set; }
-        public string Endereco { get; set; }
-        public Motorista() 
-        {
-            Id = BaseId;
-            BaseId++;
-        }
-    }
-    public class Caminhao
-    {
-        private static int BaseId = 0;
-        public int Id { get; set; }
-        public string Placa { get; set; }
-        public string Modelo { get; set; }
-        public Caminhao() 
-        {
-            Id = BaseId;
-            BaseId++;
         }
     }
 }
